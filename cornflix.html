@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌽 All About Corn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fefefe;
+      --text: #222;
+      --card-bg: #ffffff;
+      --accent: #ffca28;
+      --heading: #3e2723;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #eeeeee;
+      --card-bg: #1e1e1e;
+      --accent: #fbc02d;
+      --heading: #fdd835;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Baloo 2', cursive;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .toggle-darkmode {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      border: none;
+      color: #000;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 1000;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .hero {
+      background: var(--accent);
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      filter: contrast(1.05);
+    }
+
+    .hero h1 {
+      margin: 0;
+      padding: 15px 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background-color: rgba(255, 255, 255, 0.85);
+      color: var(--heading);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      margin-top: 30px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: var(--heading);
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-weight: 700;
+      color: var(--heading);
+    }
+
+    .section ul {
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+
+    .section li::before {
+      content: "🌽 ";
+    }
+
+    .recipes h3 {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0 10px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-darkmode" onclick="toggleDarkMode()">🌗 Toggle Dark Mode</button>
+
+  <div class="container">
+
+    <div class="hero">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Corn_on_the_cob.jpg/800px-Corn_on_the_cob.jpg" alt="Corn on the cob">
+      <h1>All About Corn</h1>
+    </div>
+
+    <div class="section">
+      <h2>What is Corn?</h2>
+      <p>Corn is a cereal plant with big golden kernels. It's one of the most important crops on Earth — used in food, fuel, plastics, and more.</p>
+    </div>
+
+    <div class="section">
+      <h2>Types of Corn</h2>
+      <ul>
+        <li>Dent Corn</li>
+        <li>Flint Corn</li>
+        <li>Sweet Corn</li>
+        <li>Popcorn</li>
+        <li>Flour Corn</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Common Uses</h2>
+      <p>Corn shows up in food (like tortillas, chips, syrup), fuels (like ethanol), and even eco-friendly products like bioplastics.</p>
+    </div>
+
+    <div class="section">
+      <h2>🌽 Fun Corn Facts</h2>
+      <ul>
+        <li>Most ears of corn have 16 even rows.</li>
+        <li>Only popcorn kernels can pop!</li>
+        <li>One bushel sweetens 400 cans of soda.</li>
+        <li>Corn grows on every continent but Antarctica.</li>
+      </ul>
+    </div>
+
+    <div class="section recipes">
+      <h2>🍴 Easy Recipes</h2>
+
+      <h3>1. Classic Butter Corn</h3>
+      <p>Boil corn for 7–10 mins. Add butter, salt, and a bit of pepper. Done!</p>
+
+      <h3>2. Corn Salad</h3>
+      <p>Mix corn with tomato, onion, lime juice, and olive oil. Refreshing!</p>
+
+      <h3>3. Cheesy Corn Fritters</h3>
+      <p>Mix corn, cheese, flour, egg. Fry until golden. Crispy & tasty!</p>
+    </div>
+
+    <footer>
+      &copy; 2025 All About Corn — Simple & Sweet 🌽
+    </footer>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
